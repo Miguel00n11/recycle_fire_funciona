@@ -3,9 +3,12 @@ package com.example.recycleryfirebase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class UserListActivity : AppCompatActivity() {
 
@@ -25,6 +28,14 @@ class UserListActivity : AppCompatActivity() {
         userArrayList= arrayListOf<User>()
         getUserData()
 
+        val cargar=findViewById<Button>(R.id.cargar)
+        cargar.setOnClickListener{
+            val database = Firebase.database
+            val myRef = database.getReference("prueba").child("id")
+
+            myRef.removeValue()
+
+        }
 
     }
 
